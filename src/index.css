@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Courier;
+  src: url("./assets/CourierPrime-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Courierbold;
+  src: url("./assets/CourierPrime-Bold.ttf") format("truetype");
+}
+.font-Courierbold {
+}
+
+@layer base {
+  /*:root {*/
+  /* For rgb(255 115 179 / <alpha-value>) */
+  /*--color-primary: 200 200 200;
+  }*/
+}
