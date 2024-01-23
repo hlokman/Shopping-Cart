@@ -1,0 +1,68 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App component > render  1`] = `
+<div>
+  <header
+    class="flex justify-around items-center bg-white p-4"
+  >
+    <h1
+      class="text-2xl font-courierbold "
+    >
+      Great Shop
+    </h1>
+    <nav
+      class="flex gap-10 font-primary text-lg"
+    >
+      <a
+        class=""
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        class=""
+        href="/"
+      >
+        Shop
+      </a>
+      <a
+        class=""
+        href="/"
+      >
+        About
+      </a>
+    </nav>
+    <div>
+      <button
+        class="bg-cart-logo bg-cover h-8 w-8 border-none pointer-events-auto"
+      />
+    </div>
+  </header>
+  <main
+    class="bg-sky-img bg-no-repeat bg-cover min-h-[calc(100vh-71px)] opacity-95 flex justify-center items-center content-center gap-10 flex-wrap  "
+  >
+    <div
+      class="max-w-[370px] flex flex-col gap-3 "
+    >
+      <h1
+        class="text-4xl font-bold text-white font-courierbold"
+      >
+        The Greatest Shop
+      </h1>
+      <p
+        class="text-white font-primary leading-4"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pulvinar nibh arcu, sed auctor erat maximus sit amet.
+      </p>
+      <button
+        class="bg-white rounded font-bold font-courierbold"
+      >
+        Go Shopping
+      </button>
+    </div>
+    <div
+      class="bg-suit-img bg-no-repeat bg-cover w-[370px] min-h-[320px] rounded-lg shadow-[0px_0px_14px_black]"
+    />
+  </main>
+</div>
+`;

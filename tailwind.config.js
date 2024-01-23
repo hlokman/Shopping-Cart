@@ -15,6 +15,10 @@ export default {
         "mall-img": "url('./src/assets/mall.jpg')",
         "sky-img": "url('./src/assets/sky.jpeg')",
         "stars-img": "url('./src/assets/stars.jpeg')",
+        "suit-img": "url('./src/assets/suit.jpg')",
+      },
+      screens: {
+        test: { max: "500px" },
       },
     },
   },
