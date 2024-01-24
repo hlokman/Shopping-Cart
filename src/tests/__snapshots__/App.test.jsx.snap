@@ -3,7 +3,7 @@
 exports[`App component > render  1`] = `
 <div>
   <header
-    class="flex justify-around items-center bg-white p-4"
+    class="flex justify-around items-center bg-gray-200 p-4"
   >
     <h1
       class="text-2xl font-courierbold "
@@ -21,7 +21,7 @@ exports[`App component > render  1`] = `
       </a>
       <a
         class=""
-        href="/"
+        href="/shop"
       >
         Shop
       </a>
@@ -36,10 +36,13 @@ exports[`App component > render  1`] = `
       <button
         class="bg-cart-logo bg-cover h-8 w-8 border-none pointer-events-auto"
       />
+      <span>
+        0
+      </span>
     </div>
   </header>
   <main
-    class="bg-sky-img bg-no-repeat bg-cover min-h-[calc(100vh-71px)] opacity-95 flex justify-center items-center content-center gap-10 flex-wrap  "
+    class="bg-sky-img bg-no-repeat bg-cover min-h-[calc(100vh-71px)] opacity-95 flex justify-center items-center content-center gap-10 flex-wrap p-7 "
   >
     <div
       class="max-w-[370px] flex flex-col gap-3 "
@@ -54,11 +57,12 @@ exports[`App component > render  1`] = `
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pulvinar nibh arcu, sed auctor erat maximus sit amet.
       </p>
-      <button
-        class="bg-white rounded font-bold font-courierbold"
+      <a
+        class="bg-white rounded font-bold font-courierbold flex justify-center items-center"
+        href="/shop"
       >
         Go Shopping
-      </button>
+      </a>
     </div>
     <div
       class="bg-suit-img bg-no-repeat bg-cover w-[370px] min-h-[320px] rounded-lg shadow-[0px_0px_14px_black]"
