@@ -20,3 +20,7 @@
   /*--color-primary: 200 200 200;
   }*/
 }
+
+body {
+  overflow-y: scroll;
+}

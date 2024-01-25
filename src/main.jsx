@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./components/App.jsx";
-import CatOne from "./components/categories/CatOne.jsx";
+//import CatOne from "./components/categories/Jewelry.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
 import Shop from "./components/Shop.jsx";
 import "./index.css";

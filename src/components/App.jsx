@@ -10,11 +10,34 @@ import { Outlet } from "react-router-dom";
 
 function App() {
   const { name } = useParams();
-  const [items, setItems] = useState(0);
+  const [itemsCart, setItemsCart] = useState(0);
+  const [items, setItems] = useState({});
 
   const handleClick = () => {
-    setItems(items + 1);
+    setItemsCart(itemsCart + 1);
   };
+
+  const fetchAllItems = async () => {
+    try {
+      let response = await fetch("https://fakestoreapi.com/products", {
+        mode: "cors",
+      });
+      if (!response.ok) {
+        throw new Error(
+          `This is a HTTP error: The status is ${response.status}`
+        );
+      }
+      let json = await response.json();
+      console.log(json);
+    } catch (error) {
+      console.log("errorHere");
+      alert(error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllItems();
+  }, []);
 
   return (
     <>
@@ -33,7 +56,7 @@ function App() {
         </nav>
         <div>
           <button className="bg-cart-logo bg-cover h-8 w-8 border-none pointer-events-auto"></button>
-          <span>{items}</span>
+          <span>{itemsCart}</span>
         </div>
       </header>
 
