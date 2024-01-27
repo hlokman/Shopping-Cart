@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Backpack from "../cards/Backpack.jsx";
 import JacketMen from "../cards/JacketMen.jsx";
 import TshirtMen from "../cards/TshirtMen.jsx";
@@ -9,21 +10,33 @@ import Ring from "../cards/Ring.jsx";
 import Ssd from "../cards/Ssd.jsx";
 import Monitor from "../cards/Monitor.jsx";
 
-function All() {
+function All({ items }) {
+  const filteredMen = items.filter(
+    (item) => item.category === "men's clothing"
+  );
+  const filteredWomen = items.filter(
+    (item) => item.category === "women's clothing"
+  );
+  const filteredJewelry = items.filter((item) => item.category === "jewelery");
+  const filteredElectronics = items.filter(
+    (item) => item.category === "electronics"
+  );
+
   return (
     <>
+      {}
       <h1 className="">ALL CARDS</h1>
       <div className="flex flex-wrap gap-10">
-        <Backpack />
-        <JacketMen />
-        <TshirtMen />
-        <JacketWomen1 />
-        <JacketWomen2 />
-        <TshirtWomen />
-        <Micropave />
-        <Ring />
-        <Ssd />
-        <Monitor />
+        <Backpack filteredItems={filteredMen} />
+        <JacketMen filteredItems={filteredMen} />
+        <TshirtMen filteredItems={filteredMen} />
+        <JacketWomen1 filteredItems={filteredWomen} />
+        <JacketWomen2 filteredItems={filteredWomen} />
+        <TshirtWomen filteredItems={filteredWomen} />
+        <Micropave filteredItems={filteredJewelry} />
+        <Ring filteredItems={filteredJewelry} />
+        <Ssd filteredItems={filteredElectronics} />
+        <Monitor filteredItems={filteredElectronics} />
       </div>
     </>
   );

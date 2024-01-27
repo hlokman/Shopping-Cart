@@ -11,34 +11,45 @@ import { Outlet } from "react-router-dom";
 function App() {
   const { name } = useParams();
   const [itemsCart, setItemsCart] = useState(0);
-  const [items, setItems] = useState({});
+  const [items, setItems] = useState([]);
+  const selectedItemsId = [1, 2, 3, 6, 7, 10, 14, 15, 16, 20]; //selected items from the fakestore API
 
   const handleClick = () => {
     setItemsCart(itemsCart + 1);
   };
 
-  const fetchAllItems = async () => {
+  const fetchItem = async (product) => {
     try {
-      let response = await fetch("https://fakestoreapi.com/products", {
-        mode: "cors",
-      });
+      let response = await fetch(
+        `https://fakestoreapi.com/products/${product}`,
+        {
+          mode: "cors",
+        }
+      );
       if (!response.ok) {
         throw new Error(
           `This is a HTTP error: The status is ${response.status}`
         );
       }
       let json = await response.json();
-      console.log(json);
+      return json; //!
     } catch (error) {
       console.log("errorHere");
       alert(error.message);
     }
   };
 
+  const fetchAllItems = async () => {
+    const fetchPromises = selectedItemsId.map((item) => fetchItem(item));
+    const allResponses = await Promise.all(fetchPromises);
+    setItems(allResponses); //! in order to avoid duplication when fetching
+  };
+
   useEffect(() => {
     fetchAllItems();
   }, []);
 
+  console.log(items);
   return (
     <>
       <header className="flex justify-around items-center bg-gray-200 p-4">
@@ -61,7 +72,7 @@ function App() {
       </header>
 
       {name === "shop" ? (
-        <Shop handleTest={handleClick} />
+        <Shop handleTest={handleClick} items={items} />
       ) : !name ? (
         <Home />
       ) : (

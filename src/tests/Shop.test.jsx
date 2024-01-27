@@ -39,9 +39,15 @@ describe("Shop component", () => {
     render(<RouterProvider router={router} />);
     expect(screen.getByRole("link", { name: "All" })).toBeInTheDocument();
     expect(screen.getAllByRole("link")[3].textContent).toMatch(/all/i);
-    expect(screen.getByRole("link", { name: "Jackets" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Suits" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Glasses" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Shoes" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Men's Clothings" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Women's Clothings" })
+    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Jewelry" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Electronics" })
+    ).toBeInTheDocument();
   });
 });
