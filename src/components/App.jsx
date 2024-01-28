@@ -13,9 +13,46 @@ function App() {
   const [itemsCart, setItemsCart] = useState(0);
   const [items, setItems] = useState([]);
   const selectedItemsId = [1, 2, 3, 6, 7, 10, 14, 15, 16, 20]; //selected items from the fakestore API
+  const [cart, setCart] = useState([
+    { productId: 111, product: "shirt", price: 20, quantity: 1 },
+  ]);
+  //let check = [];
 
   const handleClick = () => {
     setItemsCart(itemsCart + 1);
+  };
+
+  const handleSub = (e, product) => {
+    e.preventDefault();
+    console.log("submit: ", e.currentTarget.quantity.value);
+
+    //
+    let exist = cart.some((item) => item.productId === product.id);
+
+    if (!exist) {
+      setCart([
+        ...cart,
+        {
+          productId: product.id,
+          price: product.price,
+          quantity: 1,
+        },
+      ]);
+    } else {
+      setCart((prevState) =>
+        prevState.map((item) =>
+          item.productId === product.id
+            ? {
+                ...item,
+                quantity: item.quantity + 1 /*e.currentTarget.quantity.value*/,
+              }
+            : item
+        )
+      );
+    }
+
+    setItemsCart(itemsCart + 1);
+    e.target.reset();
   };
 
   const fetchItem = async (product) => {
@@ -67,12 +104,14 @@ function App() {
         </nav>
         <div>
           <button className="bg-cart-logo bg-cover h-8 w-8 border-none pointer-events-auto"></button>
-          <span>{itemsCart}</span>
+          <span>
+            {itemsCart} + {cart.length}
+          </span>
         </div>
       </header>
 
       {name === "shop" ? (
-        <Shop handleTest={handleClick} items={items} />
+        <Shop handleTest={handleClick} items={items} handleSub={handleSub} />
       ) : !name ? (
         <Home />
       ) : (

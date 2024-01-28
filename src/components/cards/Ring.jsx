@@ -6,7 +6,7 @@ function Ring({ filteredItems }) {
 
   return (
     <>
-      <div className=" font-primary border-solid border-black border-2 h-[400px] w-[280px] rounded-2xl grid grid-rows-[3fr_1fr] p-3">
+      <div className=" font-primary border-solid border-gray-300 border-[1px] h-[400px] w-[280px] rounded-2xl grid grid-rows-[3fr_1fr] p-3 transition ease-in-out duration-300 hover:scale-102 hover:-translate-y-6 hover:shadow-[0px_5px_5px_#e7e7e7]">
         <Link to="/shop/jewelry/2" className="flex justify-center items-center">
           {" "}
           <img
@@ -26,7 +26,7 @@ function Ring({ filteredItems }) {
           </div>
 
           <div className="flex justify-center items-center ">
-            <button className="font-courierbold text-[#1a2836] border-solid border-black border-2 rounded-2xl pl-2 pr-2 mt-[9px]">
+            <button className="font-courierbold text-[#1a2836] border-solid border-black border-[1px] rounded-2xl pl-2 pr-2 mt-[9px] transition ease-in-out duration-300 hover:bg-black hover:text-white">
               Add to Cart
             </button>{" "}
           </div>

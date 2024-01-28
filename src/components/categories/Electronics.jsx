@@ -14,9 +14,9 @@ function Electronics({ items }) {
   return (
     <>
       {product === "1" ? (
-        <SsdPage />
+        <SsdPage filteredItems={filteredElectronics} />
       ) : product === "2" ? (
-        <MonitorPage />
+        <MonitorPage filteredItems={filteredElectronics} />
       ) : !product ? (
         <>
           {" "}

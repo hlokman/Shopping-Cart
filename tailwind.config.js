@@ -20,6 +20,9 @@ export default {
       screens: {
         test: { max: "500px" },
       },
+      /*wordSpacing: {
+        tight: "-20px",
+      },*/
     },
   },
   plugins: [],

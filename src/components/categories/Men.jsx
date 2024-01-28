@@ -8,7 +8,7 @@ import JacketMenPage from "../itemsPages/JacketMenPage.jsx";
 import TshirtMenPage from "../itemsPages/TshirtMenPage.jsx";
 import ErrorProduct from "../ErrorProduct.jsx";
 
-function Men({ items }) {
+function Men({ items, handleSub }) {
   const { product } = useParams();
   const filteredMen = items.filter(
     (item) => item.category === "men's clothing"
@@ -19,7 +19,7 @@ function Men({ items }) {
   return (
     <>
       {product === "1" ? (
-        <BackpackPage filteredItems={filteredMen} />
+        <BackpackPage filteredItems={filteredMen} handleSub={handleSub} />
       ) : product === "2" ? (
         <JacketMenPage filteredItems={filteredMen} />
       ) : product === "3" ? (
