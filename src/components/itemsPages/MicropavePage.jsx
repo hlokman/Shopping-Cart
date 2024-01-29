@@ -1,4 +1,4 @@
-function MicropavePage({ testHere, filteredItems }) {
+function MicropavePage({ testHere, filteredItems, handleAdd }) {
   const micropaveItem = filteredItems.filter((item) => item.id === 6);
 
   return (
@@ -24,7 +24,7 @@ function MicropavePage({ testHere, filteredItems }) {
               {micropaveItem[0].price}$
             </p>
             <form
-              onSubmit
+              onSubmit={(e) => handleAdd(e, micropaveItem[0])}
               action="#"
               className="flex justify-center items-center gap-6"
             >

@@ -5,7 +5,7 @@ import SsdPage from "../itemsPages/SsdPage";
 import MonitorPage from "../itemsPages/MonitorPage";
 import ErrorProduct from "../ErrorProduct";
 
-function Electronics({ items }) {
+function Electronics({ items, handleAdd }) {
   const { product } = useParams();
   const filteredElectronics = items.filter(
     (item) => item.category === "electronics"
@@ -14,16 +14,22 @@ function Electronics({ items }) {
   return (
     <>
       {product === "1" ? (
-        <SsdPage filteredItems={filteredElectronics} />
+        <SsdPage filteredItems={filteredElectronics} handleAdd={handleAdd} />
       ) : product === "2" ? (
-        <MonitorPage filteredItems={filteredElectronics} />
+        <MonitorPage
+          filteredItems={filteredElectronics}
+          handleAdd={handleAdd}
+        />
       ) : !product ? (
         <>
           {" "}
           <h1 className="flex w-[100%] justify-center">ELECTRONICS</h1>
           <div className="flex flex-wrap gap-10">
-            <Ssd filteredItems={filteredElectronics} />
-            <Monitor filteredItems={filteredElectronics} />
+            <Ssd filteredItems={filteredElectronics} handleAdd={handleAdd} />
+            <Monitor
+              filteredItems={filteredElectronics}
+              handleAdd={handleAdd}
+            />
           </div>
         </>
       ) : (

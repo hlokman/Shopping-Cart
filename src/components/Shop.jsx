@@ -10,7 +10,7 @@ import ErrorCat from "./ErrorCat";
 import Header from "./Header";
 //width:100% for main and div
 
-function Shop({ handleTest, items, handleSub }) {
+function Shop({ handleTest, items, handleAdd }) {
   const { subname } = useParams();
 
   return (
@@ -31,15 +31,15 @@ function Shop({ handleTest, items, handleSub }) {
 
         <div className="p-8 flex flex-col  items-center w-[100%]">
           {subname === "men" ? (
-            <Men items={items} handleSub={handleSub} />
+            <Men items={items} handleAdd={handleAdd} />
           ) : subname === "women" ? (
-            <Women items={items} />
+            <Women items={items} handleAdd={handleAdd} />
           ) : subname === "jewelry" ? (
-            <Jewelry items={items} test={handleTest} />
+            <Jewelry items={items} test={handleTest} handleAdd={handleAdd} />
           ) : subname === "electronics" ? (
-            <Electronics items={items} />
+            <Electronics items={items} handleAdd={handleAdd} />
           ) : !subname ? (
-            <All items={items} />
+            <All items={items} handleAdd={handleAdd} />
           ) : (
             <ErrorCat />
           )}

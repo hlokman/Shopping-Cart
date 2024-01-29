@@ -10,7 +10,7 @@ import Ring from "../cards/Ring.jsx";
 import Ssd from "../cards/Ssd.jsx";
 import Monitor from "../cards/Monitor.jsx";
 
-function All({ items }) {
+function All({ items, handleAdd }) {
   const filteredMen = items.filter(
     (item) => item.category === "men's clothing"
   );
@@ -27,16 +27,16 @@ function All({ items }) {
       {}
       <h1 className="">ALL CARDS</h1>
       <div className="flex flex-wrap gap-10">
-        <Backpack filteredItems={filteredMen} />
-        <JacketMen filteredItems={filteredMen} />
-        <TshirtMen filteredItems={filteredMen} />
-        <JacketWomen1 filteredItems={filteredWomen} />
-        <JacketWomen2 filteredItems={filteredWomen} />
-        <TshirtWomen filteredItems={filteredWomen} />
-        <Micropave filteredItems={filteredJewelry} />
-        <Ring filteredItems={filteredJewelry} />
-        <Ssd filteredItems={filteredElectronics} />
-        <Monitor filteredItems={filteredElectronics} />
+        <Backpack filteredItems={filteredMen} handleAdd={handleAdd} />
+        <JacketMen filteredItems={filteredMen} handleAdd={handleAdd} />
+        <TshirtMen filteredItems={filteredMen} handleAdd={handleAdd} />
+        <JacketWomen1 filteredItems={filteredWomen} handleAdd={handleAdd} />
+        <JacketWomen2 filteredItems={filteredWomen} handleAdd={handleAdd} />
+        <TshirtWomen filteredItems={filteredWomen} handleAdd={handleAdd} />
+        <Micropave filteredItems={filteredJewelry} handleAdd={handleAdd} />
+        <Ring filteredItems={filteredJewelry} handleAdd={handleAdd} />
+        <Ssd filteredItems={filteredElectronics} handleAdd={handleAdd} />
+        <Monitor filteredItems={filteredElectronics} handleAdd={handleAdd} />
       </div>
     </>
   );

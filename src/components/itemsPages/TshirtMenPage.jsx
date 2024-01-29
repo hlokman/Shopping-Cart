@@ -1,4 +1,4 @@
-function TshirtMenPage({ filteredItems }) {
+function TshirtMenPage({ filteredItems, handleAdd }) {
   const tshirtItem = filteredItems.filter((item) => item.id === 2);
 
   return (
@@ -24,7 +24,7 @@ function TshirtMenPage({ filteredItems }) {
               {tshirtItem[0].price}$
             </p>
             <form
-              onSubmit
+              onSubmit={(e) => handleAdd(e, tshirtItem[0])}
               action="#"
               className="flex justify-center items-center gap-6"
             >

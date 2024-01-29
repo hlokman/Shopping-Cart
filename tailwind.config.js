@@ -11,6 +11,8 @@ export default {
         courierbold: ["courierbold", "sans-serif"],
       },
       backgroundImage: {
+        "cross-logo": "url('./src/assets/cross.svg')",
+        "cross2-logo": "url('./src/assets/cross2.svg')",
         "cart-logo": "url('./src/assets/cart.svg')",
         "mall-img": "url('./src/assets/mall.jpg')",
         "sky-img": "url('./src/assets/sky.jpeg')",

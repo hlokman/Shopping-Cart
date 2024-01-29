@@ -1,4 +1,4 @@
-function MonitorPage({ filteredItems }) {
+function MonitorPage({ filteredItems, handleAdd }) {
   const monitorItem = filteredItems.filter((item) => item.id === 14);
 
   return (
@@ -25,7 +25,7 @@ function MonitorPage({ filteredItems }) {
               {monitorItem[0].price}$
             </p>
             <form
-              onSubmit
+              onSubmit={(e) => handleAdd(e, monitorItem[0])}
               action="#"
               className="flex justify-center items-center gap-6"
             >

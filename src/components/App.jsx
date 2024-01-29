@@ -13,21 +13,34 @@ function App() {
   const [itemsCart, setItemsCart] = useState(0);
   const [items, setItems] = useState([]);
   const selectedItemsId = [1, 2, 3, 6, 7, 10, 14, 15, 16, 20]; //selected items from the fakestore API
-  const [cart, setCart] = useState([
-    { productId: 111, product: "shirt", price: 20, quantity: 1 },
-  ]);
-  //let check = [];
+  const [cart, setCart] = useState([]); // useState([{ productId: 111, name: "shirt", price: 20, quantity: 1 }]);
 
-  const handleClick = () => {
-    setItemsCart(itemsCart + 1);
+  const [popCart, setPopCard] = useState("hidden");
+  const [hidden, setHidden] = useState(true);
+  //
+  const handleCartClick = () => {
+    if (hidden) {
+      setPopCard("inline-block");
+      setHidden(false);
+    } else {
+      setPopCard("hidden");
+      setHidden(true);
+    }
   };
 
-  const handleSub = (e, product) => {
+  const handleCartQuit = () => {
+    setPopCard("hidden");
+    setHidden(true);
+  };
+
+  const handleAdd = (e, product) => {
     e.preventDefault();
-    console.log("submit: ", e.currentTarget.quantity.value);
+    //console.log("submit: ", e.currentTarget.quantity.value);
 
     //
     let exist = cart.some((item) => item.productId === product.id);
+    let quantityAdded =
+      e.target.tagName === "FORM" ? Number(e.currentTarget.quantity.value) : 1; //for the cases where the user is in the item's own page or the categories
 
     if (!exist) {
       setCart([
@@ -35,6 +48,7 @@ function App() {
         {
           productId: product.id,
           price: product.price,
+          name: product.title,
           quantity: 1,
         },
       ]);
@@ -44,15 +58,17 @@ function App() {
           item.productId === product.id
             ? {
                 ...item,
-                quantity: item.quantity + 1 /*e.currentTarget.quantity.value*/,
+                quantity: item.quantity + quantityAdded,
               }
             : item
         )
       );
     }
 
+    console.log(e.target.tagName);
+
     setItemsCart(itemsCart + 1);
-    e.target.reset();
+    if (e.target.tagName === "FORM") e.target.reset(); //for the cases where the user is in the item's own page or the categories
   };
 
   const fetchItem = async (product) => {
@@ -87,9 +103,10 @@ function App() {
   }, []);
 
   console.log(items);
+  console.log("CART:  ", cart);
   return (
     <>
-      <header className="flex justify-around items-center bg-gray-200 p-4">
+      <header className="flex justify-around items-center bg-gray-200 p-4 relative">
         <h1 className="text-2xl font-courierbold ">Great Shop</h1>
         <nav className="flex gap-10 font-primary text-lg">
           <Link to="/" className="">
@@ -103,15 +120,89 @@ function App() {
           </Link>
         </nav>
         <div>
-          <button className="bg-cart-logo bg-cover h-8 w-8 border-none pointer-events-auto"></button>
+          <button
+            onClick={handleCartClick}
+            className="bg-cart-logo bg-cover h-8 w-8 border-none pointer-events-auto"
+          ></button>
           <span>
             {itemsCart} + {cart.length}
           </span>
         </div>
       </header>
+      <section
+        className={`absolute flex flex-col w-[435px] min-h-[100px] bg-white border-solid border-gray-200 p-4  border-[1px] border-t-0 top-18 right-0 z-10 transition-all ease-in-out duration-200 ${
+          hidden ? "opacity-0 hidden" : "opacity-100 "
+        }`}
+      >
+        <div className="flex justify-end">
+          <button
+            onClick={handleCartQuit}
+            className="bg-cross-logo bg-cover h-2 w-2 border-none pointer-events-auto "
+          ></button>
+        </div>
+
+        <div style={{ maxHeight: "200px", overflowY: "auto" }}>
+          <ul>
+            {cart.map((item) => {
+              return (
+                <li
+                  key={item.productId}
+                  className="flex gap-3 my-2  items-center"
+                >
+                  {" "}
+                  <div className="flex-1 max-w-[145px]">
+                    <div
+                      className="font-courierbold overflow-x-auto whitespace-nowrap"
+                      style={{ width: "145px" }}
+                    >
+                      {item.name}
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-[28px_65px_75px_16px] gap-2">
+                    <span className="font-primary text-[13px] mx-2">
+                      {item.quantity}
+                    </span>
+                    <span className="font-primary text-sm">{item.price}$</span>
+                    <span className="font-courierbold">
+                      {Math.round(item.quantity * item.price * 100) / 100}$
+                    </span>
+                    <span>
+                      <button className="bg-cross2-logo bg-cover h-3 w-3 border-none pointer-events-auto "></button>
+                    </span>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="flex justify-center font-primary gap-3">
+            {cart.length === 0 ? (
+              "Total: 0$"
+            ) : (
+              <>
+                Total:{" "}
+                <div className="font-courierbold">
+                  {" "}
+                  {parseFloat(
+                    cart.reduce(
+                      (total, item) => item.quantity * item.price + total,
+                      0
+                    )
+                  ).toFixed(2)}
+                  $
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
 
       {name === "shop" ? (
-        <Shop handleTest={handleClick} items={items} handleSub={handleSub} />
+        <Shop
+          handleTest={handleCartClick}
+          items={items}
+          handleAdd={handleAdd}
+        />
       ) : !name ? (
         <Home />
       ) : (
@@ -122,3 +213,17 @@ function App() {
 }
 
 export default App;
+
+/*
+          item.productId === product.id && e.currentTarget.quantity.value //case where add item while the user is in the item's own page
+            ? {
+                ...item,
+                quantity: item.quantity + e.currentTarget.quantity.value,
+              }
+            : item.productId === product.id && !e.currentTarget.quantity.value //case where add item while the user is in categories
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item
+*/

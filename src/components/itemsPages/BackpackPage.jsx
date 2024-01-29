@@ -1,4 +1,4 @@
-function BackpackPage({ filteredItems, handleSub }) {
+function BackpackPage({ filteredItems, handleAdd }) {
   const backpackItem = filteredItems.filter((item) => item.id === 1);
 
   /*const handleSubmit = (e) => {
@@ -29,7 +29,7 @@ function BackpackPage({ filteredItems, handleSub }) {
               {backpackItem[0].price}$
             </p>
             <form
-              onSubmit={(e) => handleSub(e, backpackItem[0])}
+              onSubmit={(e) => handleAdd(e, backpackItem[0])}
               action="#"
               className="flex justify-center items-center gap-6"
             >

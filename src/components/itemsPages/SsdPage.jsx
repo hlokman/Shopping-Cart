@@ -1,4 +1,4 @@
-function SsdPage({ filteredItems }) {
+function SsdPage({ filteredItems, handleAdd }) {
   const ssdItem = filteredItems.filter((item) => item.id === 10);
 
   return (
@@ -24,7 +24,7 @@ function SsdPage({ filteredItems }) {
               {ssdItem[0].price}$
             </p>
             <form
-              onSubmit
+              onSubmit={(e) => handleAdd(e, ssdItem[0])}
               action="#"
               className="flex justify-center items-center gap-6"
             >

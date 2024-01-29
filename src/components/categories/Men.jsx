@@ -8,7 +8,7 @@ import JacketMenPage from "../itemsPages/JacketMenPage.jsx";
 import TshirtMenPage from "../itemsPages/TshirtMenPage.jsx";
 import ErrorProduct from "../ErrorProduct.jsx";
 
-function Men({ items, handleSub }) {
+function Men({ items, handleAdd }) {
   const { product } = useParams();
   const filteredMen = items.filter(
     (item) => item.category === "men's clothing"
@@ -19,18 +19,18 @@ function Men({ items, handleSub }) {
   return (
     <>
       {product === "1" ? (
-        <BackpackPage filteredItems={filteredMen} handleSub={handleSub} />
+        <BackpackPage filteredItems={filteredMen} handleAdd={handleAdd} />
       ) : product === "2" ? (
-        <JacketMenPage filteredItems={filteredMen} />
+        <JacketMenPage filteredItems={filteredMen} handleAdd={handleAdd} />
       ) : product === "3" ? (
-        <TshirtMenPage filteredItems={filteredMen} />
+        <TshirtMenPage filteredItems={filteredMen} handleAdd={handleAdd} />
       ) : !product ? (
         <>
           <h1 className="">MEN</h1>
           <div className="flex flex-wrap gap-10">
-            <Backpack filteredItems={filteredMen} />
-            <JacketMen filteredItems={filteredMen} />
-            <TshirtMen filteredItems={filteredMen} />
+            <Backpack filteredItems={filteredMen} handleAdd={handleAdd} />
+            <JacketMen filteredItems={filteredMen} handleAdd={handleAdd} />
+            <TshirtMen filteredItems={filteredMen} handleAdd={handleAdd} />
           </div>
         </>
       ) : (

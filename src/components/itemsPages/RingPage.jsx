@@ -1,4 +1,4 @@
-function RingPage({ filteredItems }) {
+function RingPage({ filteredItems, handleAdd }) {
   const ringItem = filteredItems.filter((item) => item.id === 7);
 
   return (
@@ -24,7 +24,7 @@ function RingPage({ filteredItems }) {
               {ringItem[0].price}$
             </p>
             <form
-              onSubmit
+              onSubmit={(e) => handleAdd(e, ringItem[0])}
               action="#"
               className="flex justify-center items-center gap-6"
             >

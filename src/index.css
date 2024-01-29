@@ -24,3 +24,24 @@
 body {
   overflow-y: scroll;
 }
+
+/* Style the scrollbar (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+/* Style the "background" of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Style the scrollbar on itself */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Couleur de fond du thumb */
+}
+
+/* Style the hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
