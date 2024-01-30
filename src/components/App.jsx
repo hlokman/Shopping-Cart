@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Home from "./Home";
 import Shop from "./Shop";
 import ErrorPage from "./ErrorPage";
+import Checkout from "./Checkout";
 import { Outlet } from "react-router-dom";
 
 function App() {
@@ -36,7 +37,6 @@ function App() {
   const handleAdd = (e, product) => {
     e.preventDefault();
     //console.log("submit: ", e.currentTarget.quantity.value);
-
     //
     let exist = cart.some((item) => item.productId === product.id);
     let quantityAdded =
@@ -49,7 +49,8 @@ function App() {
           productId: product.id,
           price: product.price,
           name: product.title,
-          quantity: 1,
+          quantity: quantityAdded,
+          image: product.image,
         },
       ]);
     } else {
@@ -66,11 +67,17 @@ function App() {
     }
 
     console.log(e.target.tagName);
-
     setItemsCart(itemsCart + 1);
     if (e.target.tagName === "FORM") e.target.reset(); //for the cases where the user is in the item's own page or the categories
   };
 
+  const handleDelete = (productId) => {
+    setCart((prevState) =>
+      prevState.filter((item) => item.productId !== productId)
+    );
+  };
+
+  //FETCH
   const fetchItem = async (product) => {
     try {
       let response = await fetch(
@@ -128,74 +135,87 @@ function App() {
             {itemsCart} + {cart.length}
           </span>
         </div>
-      </header>
-      <section
-        className={`absolute flex flex-col w-[435px] min-h-[100px] bg-white border-solid border-gray-200 p-4  border-[1px] border-t-0 top-18 right-0 z-10 transition-all ease-in-out duration-200 ${
-          hidden ? "opacity-0 hidden" : "opacity-100 "
-        }`}
-      >
-        <div className="flex justify-end">
+        {/*Cart ----> */}
+        <section
+          className={`absolute flex flex-col gap-3 w-[435px] min-h-[100px] bg-gray-100 border-solid border-gray-200 p-4  border-[1px] border-t-0 top-[75px] right-1 z-10 transition-all ease-in-out duration-200 ${
+            hidden ? "opacity-0 hidden" : "opacity-100 "
+          }`}
+        >
           <button
             onClick={handleCartQuit}
-            className="bg-cross-logo bg-cover h-2 w-2 border-none pointer-events-auto "
+            className="bg-cross-logo bg-cover h-2 w-2 border-none pointer-events-auto self-end"
           ></button>
-        </div>
 
-        <div style={{ maxHeight: "200px", overflowY: "auto" }}>
-          <ul>
-            {cart.map((item) => {
-              return (
-                <li
-                  key={item.productId}
-                  className="flex gap-3 my-2  items-center"
-                >
-                  {" "}
-                  <div className="flex-1 max-w-[145px]">
-                    <div
-                      className="font-courierbold overflow-x-auto whitespace-nowrap"
-                      style={{ width: "145px" }}
-                    >
-                      {item.name}
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-[28px_65px_75px_16px] gap-2">
-                    <span className="font-primary text-[13px] mx-2">
-                      {item.quantity}
-                    </span>
-                    <span className="font-primary text-sm">{item.price}$</span>
-                    <span className="font-courierbold">
-                      {Math.round(item.quantity * item.price * 100) / 100}$
-                    </span>
-                    <span>
-                      <button className="bg-cross2-logo bg-cover h-3 w-3 border-none pointer-events-auto "></button>
-                    </span>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-
-          <div className="flex justify-center font-primary gap-3">
-            {cart.length === 0 ? (
-              "Total: 0$"
-            ) : (
-              <>
-                Total:{" "}
-                <div className="font-courierbold">
-                  {" "}
-                  {parseFloat(
-                    cart.reduce(
-                      (total, item) => item.quantity * item.price + total,
-                      0
-                    )
-                  ).toFixed(2)}
-                  $
-                </div>
-              </>
-            )}
+          <div className="flex justify-center font-courierbold mb-[-15px]">
+            <h1>YOUR CART</h1>
           </div>
-        </div>
-      </section>
+          <hr className="border-1 border-solid border-black" />
+          <div style={{ maxHeight: "250px", overflowY: "auto" }}>
+            <ul className="flex flex-col ">
+              {cart.map((item) => {
+                return (
+                  <li key={item.productId}>
+                    <div className="flex gap-3 my-2  items-center">
+                      <div className="flex-1 max-w-[145px]">
+                        <div
+                          className="font-courierbold overflow-x-auto whitespace-nowrap"
+                          style={{ width: "145px" }}
+                        >
+                          {item.name}
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-[28px_65px_75px_16px] gap-2">
+                        <span className="font-primary text-[13px] mx-2 text-blue-400">
+                          {item.quantity}
+                        </span>
+                        <span className="font-primary text-sm">
+                          {item.price}$
+                        </span>
+                        <span className="font-courierbold">
+                          {Math.round(item.quantity * item.price * 100) / 100}$
+                        </span>
+                        <span>
+                          <button
+                            onClick={() => handleDelete(item.productId)}
+                            className="bg-cross2-logo bg-cover h-3 w-3 border-none pointer-events-auto "
+                          ></button>
+                        </span>
+                      </div>
+                    </div>
+                    <hr className=" border-solid border-black border-dotted" />
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="flex justify-center font-primary gap-3 mt-3">
+              {cart.length === 0 ? (
+                "Total: 0$"
+              ) : (
+                <>
+                  Total:{" "}
+                  <div className="font-courierbold">
+                    {" "}
+                    {parseFloat(
+                      cart.reduce(
+                        (total, item) => item.quantity * item.price + total,
+                        0
+                      )
+                    ).toFixed(2)}
+                    $
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+          <Link
+            to="/checkout"
+            className="flex justify-center items-center font-courierbold text-white bg-black w-full "
+          >
+            Checkout
+          </Link>
+        </section>
+      </header>
 
       {name === "shop" ? (
         <Shop
@@ -203,6 +223,8 @@ function App() {
           items={items}
           handleAdd={handleAdd}
         />
+      ) : name === "checkout" ? (
+        <Checkout cart={cart} handleDelete={handleDelete} />
       ) : !name ? (
         <Home />
       ) : (

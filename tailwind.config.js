@@ -11,6 +11,9 @@ export default {
         courierbold: ["courierbold", "sans-serif"],
       },
       backgroundImage: {
+        "card-logo": "url('./src/assets/card.svg')",
+        "paypal-logo": "url('./src/assets/paypal.svg')",
+        "alipay-logo": "url('./src/assets/alipay.svg')",
         "cross-logo": "url('./src/assets/cross.svg')",
         "cross2-logo": "url('./src/assets/cross2.svg')",
         "cart-logo": "url('./src/assets/cart.svg')",

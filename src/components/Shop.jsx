@@ -15,7 +15,7 @@ function Shop({ handleTest, items, handleAdd }) {
 
   return (
     <>
-      <main className="flex min-h-[calc(100vh-71px)] w-[100%]">
+      <main className="flex min-h-[calc(100vh-71px)] w-[full]">
         <aside className="font-primary flex flex-col gap-9 p-7 bg-[#f0f8ff] flex-shrink-0">
           <h1 className="text-3xl font-courierbold">Category</h1>
           <div className="flex flex-col gap-3">
