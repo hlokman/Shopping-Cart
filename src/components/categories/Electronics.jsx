@@ -23,8 +23,8 @@ function Electronics({ items, handleAdd }) {
       ) : !product ? (
         <>
           {" "}
-          <h1 className="flex w-[100%] justify-center">ELECTRONICS</h1>
-          <div className="flex flex-wrap gap-10">
+          <h1 className="font-courierbold mb-3">ELECTRONICS</h1>
+          <div className="flex flex-wrap gap-10 justify-center">
             <Ssd filteredItems={filteredElectronics} handleAdd={handleAdd} />
             <Monitor
               filteredItems={filteredElectronics}

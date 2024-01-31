@@ -16,7 +16,7 @@ function Checkout({ cart, handleDelete }) {
 
   return (
     <main className="flex justify-center items-center content-center w-[full] p-8 gap-9 flex-wrap">
-      <section className="flex-[1_1_auto] flex flex-col justify-center items-center gap-3">
+      <section className="flex-[1_1_auto] flex flex-col justify-center items-center gap-3 scale1:scale-[0.80] mobile:scale-[0.55] ">
         <div className="relative">
           <h1 className="font-courierbold text-3xl mr-[350px]">
             Shopping Cart.
@@ -80,7 +80,7 @@ function Checkout({ cart, handleDelete }) {
               <p>{shipping}$</p>
             </div>
 
-            <div className="font-courierbold text-xl flex gap-3 ml-[-98px]">
+            <div className="font-courierbold text-xl  flex gap-3 ml-[-98px] mobile:text-3xl mobile:ml-[-105px] scale1:text-3xl scale1:ml-[-108px]">
               <p>To pay:</p>
               <p>
                 {total !== 0

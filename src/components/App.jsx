@@ -77,35 +77,34 @@ function App() {
     );
   };
 
-  //FETCH
-  const fetchItem = async (product) => {
-    try {
-      let response = await fetch(
-        `https://fakestoreapi.com/products/${product}`,
-        {
-          mode: "cors",
-        }
-      );
-      if (!response.ok) {
-        throw new Error(
-          `This is a HTTP error: The status is ${response.status}`
-        );
-      }
-      let json = await response.json();
-      return json; //!
-    } catch (error) {
-      console.log("errorHere");
-      alert(error.message);
-    }
-  };
-
-  const fetchAllItems = async () => {
-    const fetchPromises = selectedItemsId.map((item) => fetchItem(item));
-    const allResponses = await Promise.all(fetchPromises);
-    setItems(allResponses); //! in order to avoid duplication when fetching
-  };
-
   useEffect(() => {
+    //FETCH
+    const fetchItem = async (product) => {
+      try {
+        let response = await fetch(
+          `https://fakestoreapi.com/products/${product}`,
+          {
+            mode: "cors",
+          }
+        );
+        if (!response.ok) {
+          throw new Error(
+            `This is a HTTP error: The status is ${response.status}`
+          );
+        }
+        let json = await response.json();
+        return json; //!
+      } catch (error) {
+        console.log("errorHere");
+        alert(error.message);
+      }
+    };
+
+    const fetchAllItems = async () => {
+      const fetchPromises = selectedItemsId.map((item) => fetchItem(item));
+      const allResponses = await Promise.all(fetchPromises);
+      setItems(allResponses); //! in order to avoid duplication when fetching
+    };
     fetchAllItems();
   }, []);
 
@@ -113,9 +112,11 @@ function App() {
   console.log("CART:  ", cart);
   return (
     <>
-      <header className="flex justify-around items-center bg-gray-200 p-4 relative">
-        <h1 className="text-2xl font-courierbold ">Great Shop</h1>
-        <nav className="flex gap-10 font-primary text-lg">
+      <header className="flex justify-around items-center bg-gray-200 p-4 relative mobile:justify-between mobile:gap-6">
+        <h1 className="text-2xl font-courierbold mobile:text-center">
+          Great Shop
+        </h1>
+        <nav className="flex gap-10 font-primary text-lg mobile:gap-6">
           <Link to="/" className="">
             Home
           </Link>
@@ -126,20 +127,21 @@ function App() {
             About
           </Link>
         </nav>
-        <div>
+        <div className="mobile:mr-5">
           <button
             onClick={handleCartClick}
-            className="bg-cart-logo bg-cover h-8 w-8 border-none pointer-events-auto"
+            className="bg-cart-logo bg-cover h-8 w-8 border-none pointer-events-auto relative"
           ></button>
-          <span>
-            {itemsCart} + {cart.length}
+          <span className="font-courierbold absolute bottom-4 mobile:bottom-7">
+            {cart.length}
           </span>
         </div>
         {/*Cart ----> */}
         <section
-          className={`absolute flex flex-col gap-3 w-[435px] min-h-[100px] bg-gray-100 border-solid border-gray-200 p-4  border-[1px] border-t-0 top-[75px] right-1 z-10 transition-all ease-in-out duration-200 ${
+          className={`absolute flex flex-col gap-3 w-[435px] min-h-[100px] bg-gray-100 border-solid border-gray-200 p-4  border-[1px] border-t-0 top-[75px] right-1 z-50 transition-all ease-in-out duration-200 ${
             hidden ? "opacity-0 hidden" : "opacity-100 "
-          }`}
+          }
+           mobile:scale-[0.82] mobile:left-1/2 mobile:-translate-x-1/2 mobile:top-[88px]`}
         >
           <button
             onClick={handleCartQuit}
@@ -195,7 +197,6 @@ function App() {
                 <>
                   Total:{" "}
                   <div className="font-courierbold">
-                    {" "}
                     {parseFloat(
                       cart.reduce(
                         (total, item) => item.quantity * item.price + total,
@@ -211,6 +212,7 @@ function App() {
           <Link
             to="/checkout"
             className="flex justify-center items-center font-courierbold text-white bg-black w-full "
+            onClick={handleCartClick}
           >
             Checkout
           </Link>

@@ -23,8 +23,8 @@ function Women({ items, handleAdd }) {
         <TshirtWomenPage filteredItems={filteredWomen} handleAdd={handleAdd} />
       ) : !product ? (
         <>
-          <h1 className="flex w-[100%] justify-center">WOMEN</h1>
-          <div className="flex flex-wrap gap-10">
+          <h1 className="font-courierbold  mb-3">WOMEN'S CLOTHINGS</h1>
+          <div className="flex flex-wrap gap-10 justify-center">
             <JacketWomen1 filteredItems={filteredWomen} handleAdd={handleAdd} />
             <JacketWomen2 filteredItems={filteredWomen} handleAdd={handleAdd} />
             <TshirtWomen filteredItems={filteredWomen} handleAdd={handleAdd} />

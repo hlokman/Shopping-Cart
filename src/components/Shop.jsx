@@ -15,21 +15,43 @@ function Shop({ handleTest, items, handleAdd }) {
 
   return (
     <>
-      <main className="flex min-h-[calc(100vh-71px)] w-[full]">
-        <aside className="font-primary flex flex-col gap-9 p-7 bg-[#f0f8ff] flex-shrink-0">
-          <h1 className="text-3xl font-courierbold">Category</h1>
-          <div className="flex flex-col gap-3">
-            <Link to="/shop" className="italic font-courierbold">
+      <main className="flex flex-col min-h-[calc(100vh-71px)] w-[full] ">
+        <nav className="font-primary flex justify-center items-center p-3 z-10 mobile:scale-[0.85] text-center">
+          <div className="flex  gap-0 border-solid p-1 pr-5 pl-5 rounded-3xl items-center bg-gray-200">
+            <Link
+              to="/shop"
+              className="italic font-courierbold border-r-2 border-r border-gray-400 px-2"
+            >
               All
             </Link>
-            <Link to="/shop/men">Men's Clothings</Link>
-            <Link to="/shop/women">Women's Clothings</Link>
-            <Link to="/shop/jewelry">Jewelry</Link>
-            <Link to="/shop/electronics">Electronics</Link>
+            <Link
+              to="/shop/men"
+              className=" border-r-2 border-r border-gray-400 px-2"
+            >
+              Men
+            </Link>
+            <Link
+              to="/shop/women"
+              className=" border-r-2 border-r border-gray-400 px-2"
+            >
+              Women
+            </Link>
+            <Link
+              to="/shop/jewelry"
+              className=" border-r-2 border-r border-gray-400 px-2"
+            >
+              Jewelry
+            </Link>
+            <Link
+              to="/shop/electronics"
+              className="border-r-2 border-r border-transparent px-2"
+            >
+              Electronics
+            </Link>
           </div>
-        </aside>
+        </nav>
 
-        <div className="p-8 flex flex-col  items-center w-[100%]">
+        <div className="p-8 flex flex-col mt-[-30px] items-center w-[100%]">
           {subname === "men" ? (
             <Men items={items} handleAdd={handleAdd} />
           ) : subname === "women" ? (

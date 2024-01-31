@@ -11,6 +11,7 @@ export default {
         courierbold: ["courierbold", "sans-serif"],
       },
       backgroundImage: {
+        "circle-logo": "url('./src/assets/circle.svg')",
         "card-logo": "url('./src/assets/card.svg')",
         "paypal-logo": "url('./src/assets/paypal.svg')",
         "alipay-logo": "url('./src/assets/alipay.svg')",
@@ -24,6 +25,10 @@ export default {
       },
       screens: {
         test: { max: "500px" },
+        ultraWide: "2900px",
+        wide: "1875px",
+        mobile: { max: "550px" },
+        scale1: { min: "551px", max: "672px" },
       },
       /*wordSpacing: {
         tight: "-20px",
@@ -32,3 +37,7 @@ export default {
   },
   plugins: [],
 };
+
+//scale1:mt-[-100px] scale1:mb-[-100px]
+//mobile:mt-[-250px] mobile:mb-[-250px]
+//scale1:scale-[0.80] mobile:scale-[0.55]

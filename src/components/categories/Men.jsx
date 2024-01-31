@@ -26,8 +26,8 @@ function Men({ items, handleAdd }) {
         <TshirtMenPage filteredItems={filteredMen} handleAdd={handleAdd} />
       ) : !product ? (
         <>
-          <h1 className="">MEN</h1>
-          <div className="flex flex-wrap gap-10">
+          <h1 className="font-courierbold mb-3">MEN'S CLOTHINGS</h1>
+          <div className="flex flex-wrap gap-10 justify-center">
             <Backpack filteredItems={filteredMen} handleAdd={handleAdd} />
             <JacketMen filteredItems={filteredMen} handleAdd={handleAdd} />
             <TshirtMen filteredItems={filteredMen} handleAdd={handleAdd} />

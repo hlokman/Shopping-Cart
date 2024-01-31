@@ -21,8 +21,8 @@ function Jewelry({ items, test, handleAdd }) {
         <RingPage filteredItems={filteredJewelry} handleAdd={handleAdd} />
       ) : !product ? (
         <>
-          <h1 className="flex w-[100%] justify-center">JEWELRY</h1>
-          <div className="flex flex-wrap gap-10">
+          <h1 className="font-courierbold  mb-3">JEWELRY</h1>
+          <div className="flex flex-wrap gap-10 justify-center">
             <Micropave filteredItems={filteredJewelry} handleAdd={handleAdd} />
             <Ring filteredItems={filteredJewelry} handleAdd={handleAdd} />
           </div>
