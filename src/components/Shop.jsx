@@ -15,7 +15,7 @@ function Shop({ handleTest, items, handleAdd }) {
 
   return (
     <>
-      <main className="flex flex-col min-h-[calc(100vh-71px)] w-[full] ">
+      <main className="flex flex-col min-h-[calc(100vh-101px)] w-[full] ">
         <nav className="font-primary flex justify-center items-center p-3 z-10 mobile:scale-[0.85] text-center">
           <div className="flex  gap-0 border-solid p-1 pr-5 pl-5 rounded-3xl items-center bg-gray-200">
             <Link

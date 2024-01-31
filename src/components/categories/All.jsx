@@ -25,7 +25,7 @@ function All({ items, handleAdd }) {
   return (
     <>
       {}
-      <h1 className="font-courierbold">ALL PRODUCTS</h1>
+      <h1 className="font-courierbold mb-3">ALL PRODUCTS</h1>
       <div className="flex flex-wrap gap-10 justify-center">
         <Backpack filteredItems={filteredMen} handleAdd={handleAdd} />
         <JacketMen filteredItems={filteredMen} handleAdd={handleAdd} />

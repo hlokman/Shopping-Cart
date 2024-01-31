@@ -96,7 +96,7 @@ function App() {
         return json; //!
       } catch (error) {
         console.log("errorHere");
-        alert(error.message);
+        console.log(error.message);
       }
     };
 
@@ -127,12 +127,12 @@ function App() {
             About
           </Link>
         </nav>
-        <div className="mobile:mr-5">
+        <div className="mobile:mr-5 mobile:ml-[-5px]">
           <button
             onClick={handleCartClick}
             className="bg-cart-logo bg-cover h-8 w-8 border-none pointer-events-auto relative"
           ></button>
-          <span className="font-courierbold absolute bottom-4 mobile:bottom-7">
+          <span className="font-courierbold absolute bottom-4 mobile:bottom-7 mobile:text-sm">
             {cart.length}
           </span>
         </div>
@@ -141,7 +141,7 @@ function App() {
           className={`absolute flex flex-col gap-3 w-[435px] min-h-[100px] bg-gray-100 border-solid border-gray-200 p-4  border-[1px] border-t-0 top-[75px] right-1 z-50 transition-all ease-in-out duration-200 ${
             hidden ? "opacity-0 hidden" : "opacity-100 "
           }
-           mobile:scale-[0.82] mobile:left-1/2 mobile:-translate-x-1/2 mobile:top-[88px]`}
+           mobile:w-[360px] mobile:left-1/2 mobile:-translate-x-1/2 mobile:top-[103px]`}
         >
           <button
             onClick={handleCartQuit}
@@ -232,12 +232,15 @@ function App() {
       ) : (
         <ErrorPage />
       )}
+
+      <footer className="flex justify-center font-courierbold items-center h-[30px] bg-gray-200 text-sm">
+        Copyright © hlokman 2024
+      </footer>
     </>
   );
 }
 
 export default App;
-
 /*
           item.productId === product.id && e.currentTarget.quantity.value //case where add item while the user is in the item's own page
             ? {
