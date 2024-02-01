@@ -41,7 +41,7 @@ function BackpackPage({ filteredItems, handleAdd }) {
                   id="quantity"
                   type="number"
                   min={1}
-                  max={40}
+                  max={99}
                   required
                   /*value={1}*/
                   /*onSubmit?*/

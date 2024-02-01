@@ -7,6 +7,7 @@ import Home from "./Home";
 import Shop from "./Shop";
 import ErrorPage from "./ErrorPage";
 import Checkout from "./Checkout";
+import Contact from "./Contact";
 import { Outlet } from "react-router-dom";
 
 function App() {
@@ -71,7 +72,7 @@ function App() {
         if (
           (item.productId === product.id && //to set a message if max number is reached
             item.quantity >= 99) ||
-          item.quantity + quantityAdded > 99
+          (item.productId === product.id && item.quantity + quantityAdded > 99)
         ) {
           console.log("MAX DE MAX");
           triggerAlert();
@@ -129,7 +130,7 @@ function App() {
   //SCROLL LOGIC
   useEffect(() => {
     const scrollHandler = () => {
-      window.scrollY < 10 ? setTop(false) : setTop(true);
+      window.scrollY > 10 ? setTop(false) : setTop(true);
     };
 
     window.addEventListener("scroll", scrollHandler); //So every time we scroll
@@ -143,21 +144,21 @@ function App() {
     <div className="relative">
       <header
         className={`flex justify-around items-center bg-gray-200 p-4 relative mobile:justify-between mobile:gap-6 sticky top-0 z-50 ${
-          top && "shadow-[0px_0px_40px_#888]"
+          !top && "shadow-[0px_0px_40px_#888]"
         }`}
       >
         <h1 className="text-2xl font-courierbold mobile:text-center">
           Great Shop
         </h1>
-        <nav className="flex gap-10 font-primary text-lg mobile:gap-6">
+        <nav className="flex gap-10 font-primary text-lg mobile:gap-5">
           <Link to="/" className="">
             Home
           </Link>
           <Link to="/shop" className="">
             Shop
           </Link>
-          <Link to="/" className="">
-            About
+          <Link to="/contact" className="">
+            Contact
           </Link>
         </nav>
         <div className="mobile:mr-5 mobile:ml-[-5px]">
@@ -171,7 +172,7 @@ function App() {
         </div>
         {/*Cart ----> */}
         <div
-          className={`absolute top-[130px] left-1/2 -translate-x-1/2 w-[355px] mobile:scale-[0.9] z-20 bg-white shadow-[0px_0px_40px_black] border-solid border-black border-[1px] p-[1px] px-3 text-center font-courierbold text-red-600 italic rounded-lg transform transition-all  duration-500 ${
+          className={`absolute top-[130px] left-1/2 -translate-x-1/2 w-[355px] mobile:scale-[0.9] z-20 bg-white shadow-[0px_0px_40px_black]  p-[1px] px-3 text-center font-courierbold text-red-600 italic rounded-lg transform transition-all  duration-500 ${
             alert
               ? "opacity-100 visible translate-y-0"
               : "opacity-0 invisible -translate-y-4"
@@ -269,6 +270,8 @@ function App() {
         />
       ) : name === "checkout" ? (
         <Checkout cart={cart} handleDelete={handleDelete} />
+      ) : name === "contact" ? (
+        <Contact />
       ) : !name ? (
         <Home />
       ) : (
@@ -296,3 +299,5 @@ export default App;
               }
             : item
 */
+
+//flex-[1_1_250px]
