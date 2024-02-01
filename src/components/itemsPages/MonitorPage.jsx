@@ -7,7 +7,6 @@ function MonitorPage({ filteredItems, handleAdd }) {
         <h1 className="font-courierbold text-xl flex justify-center items-center text-center">
           {monitorItem[0].category}
         </h1>
-        category
         <div className="flex justify-center items-center content-center gap-10 flex-wrap">
           <div className=" ">
             <img
@@ -37,7 +36,7 @@ function MonitorPage({ filteredItems, handleAdd }) {
                   id="quantity"
                   type="number"
                   min={1}
-                  max={40}
+                  max={99}
                   required
                   /*value={1}*/
                   /*onSubmit?*/

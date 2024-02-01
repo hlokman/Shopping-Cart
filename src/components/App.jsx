@@ -18,13 +18,13 @@ function App() {
 
   const [popCart, setPopCard] = useState("hidden");
   const [hidden, setHidden] = useState(true);
+  const [alert, setAlert] = useState(false);
+  const [top, setTop] = useState(true);
   //
   const handleCartClick = () => {
     if (hidden) {
-      setPopCard("inline-block");
       setHidden(false);
     } else {
-      setPopCard("hidden");
       setHidden(true);
     }
   };
@@ -56,7 +56,9 @@ function App() {
     } else {
       setCart((prevState) =>
         prevState.map((item) =>
-          item.productId === product.id
+          item.productId === product.id &&
+          item.quantity < 99 &&
+          item.quantity + quantityAdded <= 99 //To set the max number of one item to 99
             ? {
                 ...item,
                 quantity: item.quantity + quantityAdded,
@@ -64,11 +66,27 @@ function App() {
             : item
         )
       );
+
+      cart.forEach((item) => {
+        if (
+          (item.productId === product.id && //to set a message if max number is reached
+            item.quantity >= 99) ||
+          item.quantity + quantityAdded > 99
+        ) {
+          console.log("MAX DE MAX");
+          triggerAlert();
+        }
+      });
     }
 
     console.log(e.target.tagName);
     setItemsCart(itemsCart + 1);
     if (e.target.tagName === "FORM") e.target.reset(); //for the cases where the user is in the item's own page or the categories
+  };
+
+  const triggerAlert = () => {
+    setAlert(true);
+    setTimeout(() => setAlert(false), 1000);
   };
 
   const handleDelete = (productId) => {
@@ -108,11 +126,26 @@ function App() {
     fetchAllItems();
   }, []);
 
+  //SCROLL LOGIC
+  useEffect(() => {
+    const scrollHandler = () => {
+      window.scrollY < 10 ? setTop(false) : setTop(true);
+    };
+
+    window.addEventListener("scroll", scrollHandler); //So every time we scroll
+
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, [top]);
+
   console.log(items);
   console.log("CART:  ", cart);
   return (
-    <>
-      <header className="flex justify-around items-center bg-gray-200 p-4 relative mobile:justify-between mobile:gap-6">
+    <div className="relative">
+      <header
+        className={`flex justify-around items-center bg-gray-200 p-4 relative mobile:justify-between mobile:gap-6 sticky top-0 z-50 ${
+          top && "shadow-[0px_0px_40px_#888]"
+        }`}
+      >
         <h1 className="text-2xl font-courierbold mobile:text-center">
           Great Shop
         </h1>
@@ -137,6 +170,15 @@ function App() {
           </span>
         </div>
         {/*Cart ----> */}
+        <div
+          className={`absolute top-[130px] left-1/2 -translate-x-1/2 w-[355px] mobile:scale-[0.9] z-20 bg-white shadow-[0px_0px_40px_black] border-solid border-black border-[1px] p-[1px] px-3 text-center font-courierbold text-red-600 italic rounded-lg transform transition-all  duration-500 ${
+            alert
+              ? "opacity-100 visible translate-y-0"
+              : "opacity-0 invisible -translate-y-4"
+          }`}
+        >
+          You can't take more than 99 items!
+        </div>
         <section
           className={`absolute flex flex-col gap-3 w-[435px] min-h-[100px] bg-gray-100 border-solid border-gray-200 p-4  border-[1px] border-t-0 top-[75px] right-1 z-50 transition-all ease-in-out duration-200 ${
             hidden ? "opacity-0 hidden" : "opacity-100 "
@@ -179,7 +221,7 @@ function App() {
                         <span>
                           <button
                             onClick={() => handleDelete(item.productId)}
-                            className="bg-cross2-logo bg-cover h-3 w-3 border-none pointer-events-auto "
+                            className="bg-cross2-logo bg-cover h-3 w-3 border-none pointer-events-auto ml-4"
                           ></button>
                         </span>
                       </div>
@@ -236,7 +278,7 @@ function App() {
       <footer className="flex justify-center font-courierbold items-center h-[30px] bg-gray-200 text-sm">
         Copyright © hlokman 2024
       </footer>
-    </>
+    </div>
   );
 }
 
