@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 function Backpack({ filteredItems, handleAdd }) {
   /*if (!filteredItems) {
@@ -21,12 +20,9 @@ function Backpack({ filteredItems, handleAdd }) {
         <div>
           <p className="italic text-sm">{backpackItem[0].title}</p>
           <div className="flex">
-            <p className="font-courierbold mr-auto">
-              {" "}
-              {backpackItem[0].price}${" "}
-            </p>
+            <p className="font-courierbold mr-auto">{backpackItem[0].price}</p>
             <div className="">
-              <span className="font-courierbold ">Rating:</span>{" "}
+              <span className="font-courierbold ">Rating:</span>
               {backpackItem[0].rating.rate} ({backpackItem[0].rating.count})
             </div>
           </div>
@@ -37,7 +33,7 @@ function Backpack({ filteredItems, handleAdd }) {
               className="font-courierbold text-[#1a2836] border-solid border-black border-[1px] rounded-lg pl-2 pr-2 transition ease-in-out duration-300 hover:bg-black hover:text-white"
             >
               Add to Cart
-            </button>{" "}
+            </button>
           </div>
         </div>
       </div>
@@ -46,14 +42,3 @@ function Backpack({ filteredItems, handleAdd }) {
 }
 
 export default Backpack;
-
-/*
-      <div className="border-solid border-black border-2 h-[350px] w-[260px] rounded-2xl grid grid-rows-[3fr_1fr] p-2">
-        <Link to="/shop/men/1">Link</Link>
-        <div>
-          <p>{backpackItem[0].title}</p>
-          <p> {backpackItem[0].price}$ </p>
-          <div className="flex"><button className="mr-auto">Add to Cart</button> <div>Rating: {backpackItem[0].rating.rate} ({backpackItem[0].rating.count})</div></div>
-        </div>
-      </div>
-*/

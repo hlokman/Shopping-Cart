@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 function Ssd({ filteredItems, handleAdd }) {
   const ssdItem = filteredItems.filter((item) => item.id === 10);
@@ -11,7 +10,6 @@ function Ssd({ filteredItems, handleAdd }) {
           to="/shop/electronics/1"
           className=" flex justify-center items-center"
         >
-          {" "}
           <img
             src={ssdItem[0].image}
             alt="ssd"
@@ -23,7 +21,7 @@ function Ssd({ filteredItems, handleAdd }) {
           <div className="flex">
             <p className="font-courierbold mr-auto"> {ssdItem[0].price}$ </p>
             <div className="">
-              <span className="font-courierbold ">Rating:</span>{" "}
+              <span className="font-courierbold ">Rating:</span>
               {ssdItem[0].rating.rate} ({ssdItem[0].rating.count})
             </div>
           </div>
@@ -34,7 +32,7 @@ function Ssd({ filteredItems, handleAdd }) {
               className="font-courierbold text-[#1a2836] border-solid border-black border-[1px] rounded-lg pl-2 pr-2 mt-[9px] transition ease-in-out duration-300 hover:bg-black hover:text-white"
             >
               Add to Cart
-            </button>{" "}
+            </button>
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Backpack from "../cards/Backpack.jsx";
 import JacketMen from "../cards/JacketMen.jsx";
 import TshirtMen from "../cards/TshirtMen.jsx";

@@ -7,9 +7,6 @@ import Jewelry from "./categories/Jewelry";
 import Electronics from "./categories/Electronics";
 import ErrorCat from "./ErrorCat";
 
-import Header from "./Header";
-//width:100% for main and div
-
 function Shop({ handleTest, items, handleAdd }) {
   const { subname } = useParams();
 
@@ -57,7 +54,7 @@ function Shop({ handleTest, items, handleAdd }) {
           ) : subname === "women" ? (
             <Women items={items} handleAdd={handleAdd} />
           ) : subname === "jewelry" ? (
-            <Jewelry items={items} test={handleTest} handleAdd={handleAdd} />
+            <Jewelry items={items} handleAdd={handleAdd} />
           ) : subname === "electronics" ? (
             <Electronics items={items} handleAdd={handleAdd} />
           ) : !subname ? (
@@ -72,4 +69,3 @@ function Shop({ handleTest, items, handleAdd }) {
 }
 
 export default Shop;
-//        <div>{subname === "catone" ? <CatOne /> : <p>Bof</p>}</div>

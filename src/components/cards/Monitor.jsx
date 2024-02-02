@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 function Monitor({ filteredItems, handleAdd }) {
   const monitorItem = filteredItems.filter((item) => item.id === 14);
@@ -11,7 +10,6 @@ function Monitor({ filteredItems, handleAdd }) {
           to="/shop/electronics/2"
           className=" flex justify-center items-center"
         >
-          {" "}
           <img
             src={monitorItem[0].image}
             alt="monitor"
@@ -21,12 +19,9 @@ function Monitor({ filteredItems, handleAdd }) {
         <div>
           <p className="italic text-sm">{monitorItem[0].title}</p>
           <div className="flex">
-            <p className="font-courierbold mr-auto">
-              {" "}
-              {monitorItem[0].price}${" "}
-            </p>
+            <p className="font-courierbold mr-auto">{monitorItem[0].price}$</p>
             <div className="">
-              <span className="font-courierbold ">Rating:</span>{" "}
+              <span className="font-courierbold ">Rating:</span>
               {monitorItem[0].rating.rate} ({monitorItem[0].rating.count})
             </div>
           </div>
@@ -37,7 +32,7 @@ function Monitor({ filteredItems, handleAdd }) {
           >
             <button className="font-courierbold text-[#1a2836] border-solid border-black border-[1px] rounded-lg pl-2 pr-2 mt-[9px] transition ease-in-out duration-300 hover:bg-black hover:text-white">
               Add to Cart
-            </button>{" "}
+            </button>
           </div>
         </div>
       </div>

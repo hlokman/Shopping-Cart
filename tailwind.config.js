@@ -30,14 +30,7 @@ export default {
         mobile: { max: "550px" },
         scale1: { min: "551px", max: "672px" },
       },
-      /*wordSpacing: {
-        tight: "-20px",
-      },*/
     },
   },
   plugins: [],
 };
-
-//scale1:mt-[-100px] scale1:mb-[-100px]
-//mobile:mt-[-250px] mobile:mb-[-250px]
-//scale1:scale-[0.80] mobile:scale-[0.55]

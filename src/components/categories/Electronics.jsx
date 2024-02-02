@@ -40,5 +40,3 @@ function Electronics({ items, handleAdd }) {
 }
 
 export default Electronics;
-
-// className="flex justify-center items-center"

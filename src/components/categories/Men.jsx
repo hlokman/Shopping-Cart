@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Backpack from "../cards/Backpack.jsx";
 import JacketMen from "../cards/JacketMen";

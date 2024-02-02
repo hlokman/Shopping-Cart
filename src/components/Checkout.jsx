@@ -17,7 +17,6 @@ function Checkout({ cart, handleDelete }) {
   return (
     <main className="flex justify-center items-center content-center w-[full] p-8 gap-9 flex-wrap  min-h-[calc(100vh-101px)]">
       <section className="flex-[1_1_auto] flex flex-col justify-center items-center gap-3  mobile:gap-5 scale1:scale-[0.80]">
-        {/* In order to adapt the margins (top/bottom) with the scales when the number of items in the cart increases*/}
         <div className="relative">
           <h1 className="font-courierbold text-3xl mr-[350px] mobile:mr-0 mobile:text-[20px] ">
             Shopping Cart.

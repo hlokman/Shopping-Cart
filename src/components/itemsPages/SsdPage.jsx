@@ -30,7 +30,7 @@ function SsdPage({ filteredItems, handleAdd }) {
             >
               <div className="flex flex-col justify-center items-center">
                 <label htmlFor="quantity" className="block font-primary">
-                  Quantity:{" "}
+                  Quantity:
                 </label>
                 <input
                   id="quantity"
@@ -38,13 +38,10 @@ function SsdPage({ filteredItems, handleAdd }) {
                   min={1}
                   max={99}
                   required
-                  /*value={1}*/
-                  /*onSubmit?*/
                   className="flex justify-center items-center border-solid border-grey border-[1px] w-[45px] rounded-lg p-1 text-sm"
                 />
               </div>
               <button
-                //type="submit"
                 style={{ wordSpacing: "-6px" }}
                 className="font-courierbold p-2 transition ease-in-out duration-500 hover:scale-110 hover:bg-black hover:text-white rounded-xl "
               >

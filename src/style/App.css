@@ -1,28 +1,4 @@
 body {
   margin: 0;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  /*background-color: rgb(200, 200, 200);*/
-  /*background-color: #e7e7e7;*/
 }
-
-/*button {
-  background-color: inherit;
-  border: none;
-}
-
-header {
-  display: flex;
-}
-
-.pagesButtons {
-  display: flex;
-  gap: 10px;
-}
-.pagesButtons > button {
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.cartLogo {
-  background-image: url("../assets/cart.svg");
-}*/

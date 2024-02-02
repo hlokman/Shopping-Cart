@@ -2,22 +2,18 @@ import "../style/App.css";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-//import Header from "./Header";
 import Home from "./Home";
 import Shop from "./Shop";
 import ErrorPage from "./ErrorPage";
 import Checkout from "./Checkout";
 import Contact from "./Contact";
-import { Outlet } from "react-router-dom";
 
 function App() {
   const { name } = useParams();
-  const [itemsCart, setItemsCart] = useState(0);
   const [items, setItems] = useState([]);
   const selectedItemsId = [1, 2, 3, 6, 7, 10, 14, 15, 16, 20]; //selected items from the fakestore API
-  const [cart, setCart] = useState([]); // useState([{ productId: 111, name: "shirt", price: 20, quantity: 1 }]);
+  const [cart, setCart] = useState([]); // ex: useState([{ productId: 111, name: "shirt", price: 20, quantity: 1 }]);
 
-  const [popCart, setPopCard] = useState("hidden");
   const [hidden, setHidden] = useState(true);
   const [alert, setAlert] = useState(false);
   const [top, setTop] = useState(true);
@@ -31,13 +27,11 @@ function App() {
   };
 
   const handleCartQuit = () => {
-    setPopCard("hidden");
     setHidden(true);
   };
 
   const handleAdd = (e, product) => {
     e.preventDefault();
-    //console.log("submit: ", e.currentTarget.quantity.value);
     //
     let exist = cart.some((item) => item.productId === product.id);
     let quantityAdded =
@@ -74,14 +68,11 @@ function App() {
             item.quantity >= 99) ||
           (item.productId === product.id && item.quantity + quantityAdded > 99)
         ) {
-          console.log("MAX DE MAX");
           triggerAlert();
         }
       });
     }
 
-    console.log(e.target.tagName);
-    setItemsCart(itemsCart + 1);
     if (e.target.tagName === "FORM") e.target.reset(); //for the cases where the user is in the item's own page or the categories
   };
 
@@ -138,8 +129,6 @@ function App() {
     return () => window.removeEventListener("scroll", scrollHandler);
   }, [top]);
 
-  console.log(items);
-  console.log("CART:  ", cart);
   return (
     <div className="relative">
       <header
@@ -286,18 +275,3 @@ function App() {
 }
 
 export default App;
-/*
-          item.productId === product.id && e.currentTarget.quantity.value //case where add item while the user is in the item's own page
-            ? {
-                ...item,
-                quantity: item.quantity + e.currentTarget.quantity.value,
-              }
-            : item.productId === product.id && !e.currentTarget.quantity.value //case where add item while the user is in categories
-            ? {
-                ...item,
-                quantity: item.quantity + 1,
-              }
-            : item
-*/
-
-//flex-[1_1_250px]

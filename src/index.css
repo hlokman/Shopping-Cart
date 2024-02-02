@@ -38,7 +38,7 @@ body {
 
 /* Style the scrollbar on itself */
 ::-webkit-scrollbar-thumb {
-  background: #888; /* Couleur de fond du thumb */
+  background: #888;
 }
 
 /* Style the hover */

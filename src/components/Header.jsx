@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 function Header() {
   return (
@@ -27,3 +26,5 @@ function Header() {
 }
 
 export default Header;
+
+//NOT IN USE
