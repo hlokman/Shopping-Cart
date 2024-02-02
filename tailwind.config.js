@@ -28,6 +28,7 @@ export default {
         ultraWide: "2900px",
         wide: "1875px",
         mobile: { max: "550px" },
+        smallmobile: { max: "350px" },
         scale1: { min: "551px", max: "672px" },
       },
     },

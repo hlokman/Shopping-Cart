@@ -132,14 +132,14 @@ function App() {
   return (
     <div className="relative">
       <header
-        className={`flex justify-around items-center bg-gray-200 p-4 relative mobile:justify-between mobile:gap-6 sticky top-0 z-50 ${
+        className={`flex justify-around items-center bg-gray-200 p-4 relative mobile:justify-between mobile:gap-6 sticky top-0 z-50 smallmobile:gap-0  ${
           !top && "shadow-[0px_0px_40px_#888]"
         }`}
       >
-        <h1 className="text-2xl font-courierbold mobile:text-center">
+        <h1 className="text-2xl font-courierbold mobile:text-center smallmobile:text-xl smallmobile:w-[70px]">
           Great Shop
         </h1>
-        <nav className="flex gap-10 font-primary text-lg mobile:gap-5">
+        <nav className="flex gap-10 font-primary text-lg mobile:gap-5 smallmobile:gap-3 smallmobile:text-sm">
           <Link to="/" className="">
             Home
           </Link>
@@ -153,7 +153,7 @@ function App() {
         <div className="mobile:mr-5 mobile:ml-[-5px]">
           <button
             onClick={handleCartClick}
-            className="bg-cart-logo bg-cover h-8 w-8 border-none pointer-events-auto relative"
+            className="bg-cart-logo bg-cover h-8 w-8 border-none pointer-events-auto relative "
           ></button>
           <span className="font-courierbold absolute bottom-4 mobile:bottom-7 mobile:text-sm">
             {cart.length}
