@@ -1,5 +1,4 @@
-import contactImg from "../assets/handshake.jpg";
-
+import contactImg from "/assets/handshake.jpg";
 function Contact() {
   return (
     <>
