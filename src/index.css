@@ -4,12 +4,12 @@
 
 @font-face {
   font-family: Courier;
-  src: url("./assets/CourierPrime-Regular.ttf") format("truetype");
+  src: url("/assets/CourierPrime-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Courierbold";
-  src: url("./assets/CourierPrime-Bold.ttf") format("truetype");
+  src: url("/assets/CourierPrime-Bold.ttf") format("truetype");
 }
 .font-Courierbold {
 }
