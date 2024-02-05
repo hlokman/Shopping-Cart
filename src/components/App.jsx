@@ -129,6 +129,8 @@ function App() {
     return () => window.removeEventListener("scroll", scrollHandler);
   }, [top]);
 
+  //console.log("CART: ", cart);
+
   return (
     <div className="relative">
       <header

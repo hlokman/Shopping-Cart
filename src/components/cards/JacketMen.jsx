@@ -6,7 +6,6 @@ function JacketMen({ filteredItems, handleAdd }) {
     return <div>Loading...</div>;
   }*/
   const jacketItem = filteredItems.filter((item) => item.id === 3);
-  console.log("jacket: ", jacketItem);
 
   return (
     <>

@@ -13,8 +13,6 @@ function Men({ items, handleAdd }) {
     (item) => item.category === "men's clothing"
   );
 
-  console.log("men's clothings: ", filteredMen);
-
   return (
     <>
       {product === "1" ? (

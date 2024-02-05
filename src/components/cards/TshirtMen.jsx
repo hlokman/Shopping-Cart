@@ -5,7 +5,6 @@ function TshirtMen({ filteredItems, handleAdd }) {
     return <div>Loading...</div>;
   }*/
   const tshirtItem = filteredItems.filter((item) => item.id === 2);
-  console.log("tshirtMen: ", tshirtItem);
 
   return (
     <>

@@ -5,7 +5,6 @@ function Backpack({ filteredItems, handleAdd }) {
     return <div>Loading...</div>;
   }*/
   const backpackItem = filteredItems.filter((item) => item.id === 1);
-  console.log("backpack: ", backpackItem[0]);
 
   return (
     <>
